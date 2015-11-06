@@ -3,7 +3,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 	</head>
 	<body ng-app="NotesApp">
-		<div class="container">
+		<div class="container" ng-controller="NotesController">
 			<form action="">
 				<div class="form-group">
 					<div class="row-fluid">
@@ -11,17 +11,17 @@
 							<div class="well">
 								<h1>Notes' List</h1>
 								<ul>
-									<li>SAMPLE</li>
+									<li ng-repeat="notes in Notes"><button class="btn btn-default" ng-click="show(notes)">{{notes.topic}}</button></li>
 								</ul>
 							</div>
 						</div>	
 						<div class="col-md-7">
 							<div class="well">
 								<div class="form-group">
-									<input type="text" placeholder="Topic" class="form-control" />
+									<input type="text" placeholder="Topic" class="form-control" ng-model="topic" />
 								</div>
 								<div class="form-group">
-									<textarea name="" id="" cols="30" rows="15" class="form-control" placeholder="Body"></textarea>
+									<textarea name="" id="" cols="30" rows="15" class="form-control" placeholder="Body" ng-model="body"></textarea>
 								</div>
 								<button class="btn btn-danger">Delete</button>
 								<button class="btn btn-success pull-right">Save</button>
@@ -30,11 +30,23 @@
 						</div>
 					</div>
 				</div>
+				{{body}}
+				{{topic}}
 			</form>
 		</div>
 		<script type="text/javascript" src="js/angular.min.js"></script>
 		<script type="text/javascript">
 			var NotesApp = angular.module("NotesApp",[])
+			NotesApp.controller("NotesController",function($scope){
+				$scope.Notes = [
+					{topic: 'Assignment', body:'do your assignment'},
+					{topic: 'Cook', body:'Follow recipe in cook book'}
+				];
+				$scope.show = function(notes){
+					$scope.topic = notes.topic;
+					$scope.body = notes.body;
+				};
+			});
 		</script>
 	</body>
 </html>
