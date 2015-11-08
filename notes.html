@@ -10,9 +10,8 @@
 						<div class="col-md-5">
 							<div class="well">
 								<h1>Notes' List</h1>
-								<ul>
-									<li ng-repeat="notes in Notes"><button class="btn btn-default" ng-click="show(notes)">{{notes.topic}}</button></li>
-								</ul>
+									<button class="btn btn-default btn-block" ng-repeat="notes in Notes" ng-click="show(notes)">{{notes.topic}}</button>
+								</div>
 							</div>
 						</div>	
 						<div class="col-md-7">
@@ -24,14 +23,14 @@
 									<textarea name="" id="" cols="30" rows="15" class="form-control" placeholder="Body" ng-model="body"></textarea>
 								</div>
 								<button class="btn btn-danger">Delete</button>
-								<button class="btn btn-success pull-right">Save</button>
+								<button class="btn btn-success pull-right" ng-click="getValue(topic); getValue2(body)">Save</button>
 								<button class="btn btn-default pull-right">Cancel</button>
 							</div>
 						</div>
 					</div>
+					{{getTopic}}
+					{{getBody}}
 				</div>
-				{{body}}
-				{{topic}}
 			</form>
 		</div>
 		<script type="text/javascript" src="js/angular.min.js"></script>
@@ -40,11 +39,25 @@
 			NotesApp.controller("NotesController",function($scope){
 				$scope.Notes = [
 					{topic: 'Assignment', body:'do your assignment'},
-					{topic: 'Cook', body:'Follow recipe in cook book'}
+					{topic: 'Cook', body:'Follow recipe in cook book'},
+					{topic: 'Study', body: 'Exams and quizzes'}
 				];
 				$scope.show = function(notes){
 					$scope.topic = notes.topic;
 					$scope.body = notes.body;
+				};
+				$scope.getTopic = null;
+				$scope.getBody = null;
+				$scope.getValue = function(topic){
+					if($scope.getTopic===null)
+					{
+						$scope.getTopic = topic;
+					}
+				};
+				$scope.getValue2 = function(body){
+					if($scope.getBody===null){
+						$scope.getBody = body;
+					}
 				};
 			});
 		</script>
