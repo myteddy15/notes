@@ -23,13 +23,11 @@
 									<textarea name="" id="" cols="30" rows="15" class="form-control" placeholder="Body" ng-model="body"></textarea>
 								</div>
 								<button class="btn btn-danger">Delete</button>
-								<button class="btn btn-success pull-right" ng-click="getValue(topic); getValue2(body)">Save</button>
+								<button class="btn btn-success pull-right" ng-click="addValue()">Save</button>
 								<button class="btn btn-default pull-right">Cancel</button>
 							</div>
 						</div>
 					</div>
-					{{getTopic}}
-					{{getBody}}
 				</div>
 			</form>
 		</div>
@@ -42,22 +40,16 @@
 					{topic: 'Cook', body:'Follow recipe in cook book'},
 					{topic: 'Study', body: 'Exams and quizzes'}
 				];
+				//testing ng push
+				$scope.test = [];
 				$scope.show = function(notes){
 					$scope.topic = notes.topic;
 					$scope.body = notes.body;
 				};
-				$scope.getTopic = null;
-				$scope.getBody = null;
-				$scope.getValue = function(topic){
-					if($scope.getTopic===null)
-					{
-						$scope.getTopic = topic;
-					}
-				};
-				$scope.getValue2 = function(body){
-					if($scope.getBody===null){
-						$scope.getBody = body;
-					}
+				//testing ng push
+				$scope.addValue = function(){
+					//$scope.test.push($scope.topic);
+					$scope.Notes.push($scope.topic);
 				};
 			});
 		</script>
