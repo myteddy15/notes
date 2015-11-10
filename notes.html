@@ -24,7 +24,7 @@
 								</div>
 								<button class="btn btn-danger" ng-click="deleteValue()">Delete</button>
 								<button class="btn btn-success pull-right" ng-click="addValue()">Save</button>
-								<button class="btn btn-default pull-right">Cancel</button>
+								<button class="btn btn-default pull-right" ng-click="cancelValue()">Cancel</button>
 							</div>
 						</div>
 					</div>
@@ -54,6 +54,10 @@
 				};
 				$scope.deleteValue = function(index){
 					$scope.Notes.splice(index,1);
+				};
+				$scope.cancelValue = function(){
+					$scope.topic = null;
+					$scope.body = null;
 				};
 			});
 		</script>
