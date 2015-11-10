@@ -4,13 +4,13 @@
 	</head>
 	<body ng-app="NotesApp">
 		<div class="container" ng-controller="NotesController">
-			<form action="">
+			<form>
 				<div class="form-group">
 					<div class="row-fluid">
 						<div class="col-md-5">
 							<div class="well">
 								<h1>Notes' List</h1>
-									<button class="btn btn-default btn-block" ng-repeat="notes in Notes" ng-click="show(notes)">{{notes.topic}}</button>
+									<button class="btn btn-default btn-block" ng-repeat="notes in Notes track by $index" ng-click="show(notes)">{{notes.topic}}</button>
 								</div>
 							</div>
 						</div>	
@@ -22,7 +22,7 @@
 								<div class="form-group">
 									<textarea name="" id="" cols="30" rows="15" class="form-control" placeholder="Body" ng-model="body"></textarea>
 								</div>
-								<button class="btn btn-danger">Delete</button>
+								<button class="btn btn-danger" ng-click="deleteValue()">Delete</button>
 								<button class="btn btn-success pull-right" ng-click="addValue()">Save</button>
 								<button class="btn btn-default pull-right">Cancel</button>
 							</div>
@@ -49,7 +49,11 @@
 				//testing ng push
 				$scope.addValue = function(){
 					//$scope.test.push($scope.topic);
-					$scope.Notes.push($scope.topic);
+					console.log($scope.Notes);
+					$scope.Notes.push({topic:$scope.topic,body:$scope.body});
+				};
+				$scope.deleteValue = function(index){
+					$scope.Notes.splice(index,1);
 				};
 			});
 		</script>
