@@ -40,15 +40,11 @@
 					{topic: 'Cook', body:'Follow recipe in cook book'},
 					{topic: 'Study', body: 'Exams and quizzes'}
 				];
-				//testing ng push
-				$scope.test = [];
 				$scope.show = function(notes){
 					$scope.topic = notes.topic;
 					$scope.body = notes.body;
 				};
-				//testing ng push
 				$scope.addValue = function(){
-					//$scope.test.push($scope.topic);
 					console.log($scope.Notes);
 					$scope.Notes.push({topic:$scope.topic,body:$scope.body});
 				};
