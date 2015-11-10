@@ -47,6 +47,8 @@
 				$scope.addValue = function(){
 					console.log($scope.Notes);
 					$scope.Notes.push({topic:$scope.topic,body:$scope.body});
+					$scope.topic = null;
+					$scope.body = null;
 				};
 				$scope.deleteValue = function(index){
 					$scope.Notes.splice(index,1);
